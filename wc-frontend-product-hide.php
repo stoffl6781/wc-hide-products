@@ -160,14 +160,26 @@ function get_exclude_product_ids()
  * Exclude from Shop
  */
 
-add_action('pre_get_posts', 'exclude_products_from_loop');
+ add_action('pre_get_posts', 'exclude_products_from_loop');
 
-function exclude_products_from_loop($query)
-{
-    if ((is_shop() || is_product_category()) && $query->is_main_query()) {
-        $excluded_ids = get_exclude_product_ids();
-        if (!empty($excluded_ids)) {
-            $query->set('post__not_in', $excluded_ids);
-        }
-    }
-}
+ function exclude_products_from_loop($query)
+ {
+     if ((is_shop() || is_product_category()) && $query->is_main_query() && !is_admin()) {
+         $excluded_ids = get_exclude_product_ids();
+         if (!empty($excluded_ids)) {
+             $query->set('post__not_in', $excluded_ids);
+         }
+     }
+ }
+ 
+ add_filter('the_title', 'modify_product_title_for_admin', 10, 2);
+ 
+ function modify_product_title_for_admin($title, $post_id) {
+     if (is_admin() && current_user_can('administrator')) {
+         $excluded_ids = get_exclude_product_ids();
+         if (in_array($post_id, $excluded_ids)) {
+             $title = ' (hidden Product) ' . $title;
+         }
+     }
+     return $title;
+ }
