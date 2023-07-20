@@ -6,9 +6,16 @@
     Author: Christoph Purin
     Author URI: https://www.purin.at
     License: MIT
+    Description: WooCommerce hide products in frontend
     Text Domain: wc-frontend-product-hide
     Domain Path: languages
-    */
+    GitHub Plugin URI: https://github.com/stoffl6781/woocommerce-fronted-product-hide/
+    GitHub Branch:     master
+*/
+
+if ( ! defined( 'WPINC' ) ) {
+    die;
+}
 
 add_action('plugins_loaded', 'load_product_hide_textdomain');
 function load_product_hide_textdomain()
@@ -16,10 +23,36 @@ function load_product_hide_textdomain()
     load_plugin_textdomain('wc-frontend-product-hide', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 }
 
+/**
+ * Activation hook.
+ */
 
-add_action('admin_menu', 'my_add_custom_settings_page');
+function wcfpd_activate()
+{
+    // Optionsfeld erstellen oder Standardwerte festlegen
+    add_option('exclude_product_ids', '');
+    // Weitere Initialisierungslogik hier einfügen
+}
 
-function my_add_custom_settings_page()
+register_activation_hook(__FILE__, 'wcfpd_activate');
+
+/**
+ * Deactivation hook.
+ */
+
+function wcfpd_deactivate() {
+	delete_option('exclude_product_ids');
+}
+
+register_deactivation_hook( __FILE__, 'wcfpd_deactivate' );
+
+/**
+ * Register frontend option page
+ */
+
+add_action('admin_menu', 'wc_frontend_product_hide_admin_menu');
+
+function wc_frontend_product_hide_admin_menu()
 {
     add_submenu_page(
         'woocommerce',
@@ -27,14 +60,20 @@ function my_add_custom_settings_page()
         __('Product hide settings', 'wc-frontend-product-hide'),
         'manage_options',
         'my-custom-settings',
-        'my_custom_settings_page'
+        'wc_frontend_product_hide_admin_page'
     );
 }
 
-function my_custom_settings_page()
+function wc_frontend_product_hide_admin_page()
 {
 ?>
     <div class="wrap">
+        <?php
+        if (isset($_GET['settings-updated'])) {
+            settings_errors('wc-frontend-product-hide');
+        }
+        ?>
+
         <h1><?php echo esc_html(__('My custom settings', 'wc-frontend-product-hide')); ?></h1>
         <form method="post" action="options.php">
             <?php
@@ -54,6 +93,17 @@ function exclude_products_options_init()
     add_settings_section('exclude_products_section', 'Ausgeschlossene Produkte', 'exclude_products_section_callback', 'woocommerce');
     add_settings_field('exclude_product_ids_field', 'Produkt-IDs', 'exclude_product_ids_field_callback', 'woocommerce', 'exclude_products_section');
     register_setting('woocommerce', 'exclude_product_ids', 'sanitize_callback');
+
+    if (isset($_GET['settings-updated'])) {
+        $settings_saved = $_GET['settings-updated'];
+        if ($settings_saved) {
+            // Optionen erfolgreich gespeichert
+            add_settings_error('wc-frontend-product-hide', 'settings_saved', __('Settings saved.', 'wc-frontend-product-hide'), 'updated');
+        } else {
+            // Fehler beim Speichern der Optionen
+            add_settings_error('wc-frontend-product-hide', 'settings_not_saved', __('Failed to save settings.', 'wc-frontend-product-hide'), 'error');
+        }
+    }
 }
 
 
@@ -93,6 +143,9 @@ function exclude_product_ids_field_callback()
     wp_reset_postdata();
 }
 
+/**
+ * Get exclude list
+ */
 function get_exclude_product_ids()
 {
     $exclude_product_ids = get_option('exclude_product_ids');
@@ -102,6 +155,10 @@ function get_exclude_product_ids()
     }
     return array();
 }
+
+/**
+ * Exclude from Shop
+ */
 
 add_action('pre_get_posts', 'exclude_products_from_loop');
 
