@@ -1,4 +1,4 @@
-=== WooCommerce frontend product hide ===
+=== WC frontend product hide ===
 
 Contributors: cpurin
 Tags: woocommerce, products, frontend, hide
@@ -10,12 +10,12 @@ License URI: https://opensource.org/licenses/MIT
 
 == Description ==
 
-The WooCommerce frontend product hide plugin allows you to exclude specific products from being displayed on the frontend of your WooCommerce shop and product category pages. This can be useful if you want to hide certain products from customers.
+The WC frontend product hide plugin allows you to exclude specific products from being displayed on the frontend of your WooCommerce shop and product category pages. This can be useful if you want to hide certain products from customers.
 It also supports Elementor WooCommerce Archive Widget. 
 
 == Installation ==
 
-1. Upload the `woocommerce-frontend-product-hide` folder to the `/wp-content/plugins/` directory.
+1. Upload the `wc-frontend-product-hide` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Go to WooCommerce > Custom Settings to configure the plugin settings.
 4. Enter the product IDs in the designated field to exclude those products from being displayed.
@@ -25,7 +25,7 @@ It also supports Elementor WooCommerce Archive Widget.
 = How can I exclude products from being displayed? =
 
 To exclude products from being displayed, follow these steps:
-1. Install and activate the WooCommerce frontend product hide plugin.
+1. Install and activate the WC frontend product hide plugin.
 2. Go to WooCommerce > Custom Settings.
 3. Enter the product IDs in the designated field. Separate multiple IDs with commas.
 4. Save the settings.
@@ -59,4 +59,4 @@ Contributions are welcome! Please open an issue or submit a pull request on the 
 
 == License ==
 
-The WooCommerce frontend product hide plugin is released under the MIT License. See the [License](https://opensource.org/licenses/MIT) file for more information.
+The WC frontend product hide plugin is released under the MIT License. See the [License](https://opensource.org/licenses/MIT) file for more information.

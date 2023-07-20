@@ -1,12 +1,12 @@
 <?php
 /*
-    Plugin Name: WooCommerce frontend product hide
+    Plugin Name: WC frontend product hide
     Plugin URI: https://www.purin.at/opensource/woocommerce-frontend-product-hide/
     Version: 1.0.0
     Author: Christoph Purin
     Author URI: https://www.purin.at
     License: MIT
-    Description: WooCommerce hide products in frontend
+    Description: WC hide products in frontend
     Text Domain: wc-frontend-product-hide
     Domain Path: languages
     GitHub Plugin URI: https://github.com/stoffl6781/woocommerce-fronted-product-hide/
