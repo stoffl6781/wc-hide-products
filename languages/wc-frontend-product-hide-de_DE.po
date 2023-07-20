@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce frontend product hide\n"
-"POT-Creation-Date: 2023-07-20 09:07+0200\n"
-"PO-Revision-Date: 2023-07-20 09:11+0200\n"
+"POT-Creation-Date: 2023-07-20 09:43+0200\n"
+"PO-Revision-Date: 2023-07-20 09:43+0200\n"
 "Last-Translator: Christoph purin <christoph@purin.at>\n"
 "Language-Team: Christoph purin <christoph@purin.at>\n"
 "Language: de_DE\n"
@@ -20,15 +20,23 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: wc-frontend-product-hide.php:20 wc-frontend-product-hide.php:21
+#: wc-frontend-product-hide.php:59 wc-frontend-product-hide.php:60
 msgid "Product hide settings"
 msgstr "Produkt ausblenden"
 
-#: wc-frontend-product-hide.php:31
+#: wc-frontend-product-hide.php:77
 msgid "My custom settings"
 msgstr "Benutzerdefinierte Einstellungen"
 
-#: wc-frontend-product-hide.php:53
+#: wc-frontend-product-hide.php:101
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: wc-frontend-product-hide.php:104
+msgid "Failed to save settings."
+msgstr "Es ist ein Fehler aufgetreten."
+
+#: wc-frontend-product-hide.php:112
 msgid "Enter product IDs here to exclude products."
 msgstr ""
 "Wählen Sie hier die Produkt-IDs , um Produkte auszuschließen. (Shift, STRG "
@@ -41,6 +49,10 @@ msgstr "WooCommerce Frontend Produkt ausblenden"
 #. Plugin URI of the plugin/theme
 msgid "https://www.purin.at/opensource/woocommerce-frontend-product-hide/"
 msgstr "https://www.purin.at/opensource/woocommerce-frontend-product-hide/"
+
+#. Description of the plugin/theme
+msgid "WooCommerce hide products in frontend"
+msgstr "WooCommerce Frontend Produkt ausblenden"
 
 #. Author of the plugin/theme
 msgid "Christoph Purin"
