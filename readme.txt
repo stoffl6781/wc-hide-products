@@ -30,6 +30,11 @@ To exclude products from being displayed, follow these steps:
 3. Enter the product IDs in the designated field. Separate multiple IDs with commas.
 4. Save the settings.
 
+= Where do I report security bugs found in this plugin? = Please report security bugs found in the source code of the YOUR_PLUGIN_NAME_HERE plugin through the [Patchstack Vulnerability Disclosure  Program](YOUR_MVDP_URL_HERE). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin. 
+
+# Security Policy 
+## Reporting Security Bugs Please report security bugs found in the YOUR_PLUGIN_NAME_HERE plugin's source code through the [Patchstack Vulnerability Disclosure Program](YOUR_MVDP_URL_HERE). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Changelog ==
 
 = 1.0.0 =
